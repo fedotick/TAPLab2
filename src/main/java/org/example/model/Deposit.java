@@ -3,7 +3,7 @@ package org.example.model;
 public class Deposit {
 
     private Long id;
-    private String duration;
+    private Duration duration;
     private String type;
     private double balance;
     private double annualRate;
@@ -13,7 +13,7 @@ public class Deposit {
     public Deposit() {
     }
 
-    public Deposit(String duration, String type, double balance, double annualRate, int durationInYears, String currency) {
+    public Deposit(Duration duration, String type, double balance, double annualRate, int durationInYears, String currency) {
         this.duration = duration;
         this.type = type;
         this.balance = balance;
@@ -30,11 +30,11 @@ public class Deposit {
         this.id = id;
     }
 
-    public String getDuration() {
+    public Duration getDuration() {
         return duration;
     }
 
-    public void setDuration(String duration) {
+    public void setDuration(Duration duration) {
         this.duration = duration;
     }
 

@@ -8,9 +8,10 @@ import java.util.Optional;
 
 public class DepositRepository implements IRepository<Deposit, Long> {
 
-    private static DepositRepository instance;
     private final List<Deposit> deposits;
-    private long currentId = 1;
+    private Long currentId = 1L;
+
+    private static DepositRepository instance;
 
     private DepositRepository() {
         deposits = new ArrayList<>();

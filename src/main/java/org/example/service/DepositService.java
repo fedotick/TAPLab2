@@ -1,11 +1,12 @@
 package org.example.service;
 
 import org.example.model.Deposit;
+import org.example.model.Duration;
 import org.example.repository.DepositRepository;
 
 import java.util.Optional;
 
-public class DepositService implements IDepositService {
+public class DepositService {
 
     private final DepositRepository depositRepository;
     private Deposit currentDeposit;
@@ -18,23 +19,20 @@ public class DepositService implements IDepositService {
         this.depositRepository = depositRepository;
     }
 
-    @Override
-    public void setDuration(String duration) {
+    public void setDuration(Duration duration) {
         if (currentDeposit != null) {
             currentDeposit.setDuration(duration);
             depositRepository.save(currentDeposit);
         }
     }
 
-    @Override
-    public String getDuration() {
+    public Duration getDuration() {
         if (currentDeposit != null) {
             return currentDeposit.getDuration();
         }
         return null;
     }
 
-    @Override
     public void setType(String type) {
         if (currentDeposit != null) {
             currentDeposit.setType(type);
@@ -42,7 +40,6 @@ public class DepositService implements IDepositService {
         }
     }
 
-    @Override
     public String getType() {
         if (currentDeposit != null) {
             return currentDeposit.getType();
@@ -50,7 +47,6 @@ public class DepositService implements IDepositService {
         return null;
     }
 
-    @Override
     public void close() {
         if (currentDeposit != null) {
             depositRepository.deleteById(currentDeposit.getId());
@@ -58,7 +54,6 @@ public class DepositService implements IDepositService {
         }
     }
 
-    @Override
     public void openNewDeposit(String currency) {
         if (currentDeposit != null) {
             Deposit newDeposit = new Deposit(
@@ -74,7 +69,6 @@ public class DepositService implements IDepositService {
         }
     }
 
-    @Override
     public double calculateInterest() {
         if (currentDeposit != null) {
             return currentDeposit.getBalance() * (currentDeposit.getAnnualRate() / 100) * currentDeposit.getDurationInYears();

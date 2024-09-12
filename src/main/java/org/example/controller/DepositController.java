@@ -1,5 +1,6 @@
 package org.example.controller;
 
+import org.example.model.Duration;
 import org.example.service.DepositService;
 
 public class DepositController {
@@ -10,7 +11,7 @@ public class DepositController {
         this.depositService = depositService;
     }
 
-    public void changeDuration(Long depositId, String newDuration) {
+    public void changeDuration(Long depositId, Duration newDuration) {
         depositService.setCurrentDeposit(depositId);
         depositService.setDuration(newDuration);
         System.out.println("Продолжительность вклада изменена на: " + newDuration);

@@ -1,19 +1,21 @@
 package org.example.model;
 
+import java.util.Objects;
+
 public class Deposit {
 
     private Long id;
     private Duration duration;
-    private String type;
-    private double balance;
-    private double annualRate;
-    private int durationInYears;
-    private String currency;
+    private Type type;
+    private Double balance;
+    private Double annualRate;
+    private Integer durationInYears;
+    private Currency currency;
 
     public Deposit() {
     }
 
-    public Deposit(Duration duration, String type, double balance, double annualRate, int durationInYears, String currency) {
+    public Deposit(Duration duration, Type type, double balance, double annualRate, int durationInYears, Currency currency) {
         this.duration = duration;
         this.type = type;
         this.balance = balance;
@@ -38,11 +40,11 @@ public class Deposit {
         this.duration = duration;
     }
 
-    public String getType() {
+    public Type getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(Type type) {
         this.type = type;
     }
 
@@ -70,12 +72,25 @@ public class Deposit {
         this.durationInYears = durationInYears;
     }
 
-    public String getCurrency() {
+    public Currency getCurrency() {
         return currency;
     }
 
-    public void setCurrency(String currency) {
+    public void setCurrency(Currency currency) {
         this.currency = currency;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Deposit deposit = (Deposit) o;
+        return Objects.equals(id, deposit.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
     }
 
     @Override

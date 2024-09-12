@@ -2,15 +2,14 @@ package org.example.model;
 
 import java.util.Objects;
 
-public class Duration {
+public class Type {
 
     private Long id;
     private String name;
 
-    public Duration() {
-    }
+    public Type() {}
 
-    public Duration(String name) {
+    public Type(String name) {
         this.name = name;
     }
 
@@ -34,8 +33,8 @@ public class Duration {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Duration duration = (Duration) o;
-        return Objects.equals(id, duration.id);
+        Type type = (Type) o;
+        return Objects.equals(id, type.id);
     }
 
     @Override
@@ -45,7 +44,7 @@ public class Duration {
 
     @Override
     public String toString() {
-        return "Duration{" +
+        return "Type{" +
                 "name='" + name + '\'' +
                 '}';
     }
